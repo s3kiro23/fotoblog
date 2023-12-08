@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card mx-auto" style="width: 25rem">
+        <div class="card-header d-flex justify-content-center align-items-center">
+            <h1>FotoBlog</h1>
+        </div>
+
+        <div class="card-body">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="d-flex flex-column gap-3">
+                    <a href="{% url 'recovery-password' %}">Mot de passe oublié ?</a>
+                    <button class="btn btn-primary" type="submit">Se connecter</button>
+                    <p>Pas encore membre ? <a href="{% url 'signup' %}">Inscrivez-vous maintenant !</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

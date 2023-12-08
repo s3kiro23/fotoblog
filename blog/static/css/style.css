@@ -1,0 +1,172 @@
+.theme-control-toggle .theme-control-toggle-label {
+  height: 30px;
+  width: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-color: var(--falcon-gray-300);
+  color: var(--falcon-primary);
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.theme-control-toggle .theme-control-toggle-label:hover {
+  background-color: var(--falcon-gray-400);
+}
+.theme-control-toggle .theme-control-toggle-input {
+  display: none;
+}
+.theme-control-toggle .theme-control-toggle-input:checked ~ .theme-control-toggle-dark {
+  display: none;
+}
+.theme-control-toggle .theme-control-toggle-input:not(:checked) ~ .theme-control-toggle-light {
+  display: none;
+}
+
+.theme-switch-toggle .theme-switch-toggle-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0.5rem 0.5rem;
+  margin-bottom: 0;
+  display: none;
+  color: rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.theme-switch-toggle .theme-switch-toggle-label:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+@media (min-width: 992px) {
+  .theme-switch-toggle .theme-switch-toggle-label {
+    display: block;
+  }
+}
+.theme-switch-toggle .theme-switch-toggle-input {
+  display: none;
+}
+.theme-switch-toggle .theme-switch-toggle-input:checked ~ .theme-switch-toggle-dark {
+  display: none;
+}
+.theme-switch-toggle .theme-switch-toggle-input:not(:checked) ~ .theme-switch-toggle-light {
+  display: none;
+}
+
+/* Fade in/up animation */
+
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		margin-top: 0.75rem;
+	}
+
+	100% {
+		opacity: 1;
+		margin-top: 0;
+	}
+}
+
+.animated--fade-in-up {
+	animation-name: fadeInUp !important;
+	animation-duration: 300ms !important;
+	animation-timing-function: margin cubic-bezier(0.18, 1.25, 0.4, 1),
+		opacity cubic-bezier(0, 1, 0.4, 1) !important;
+}
+
+.animated--fade-in-up.dropdown-menu {
+	margin-top: 0;
+	top: 5rem !important;
+}
+
+/* Fade in animation */
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.animated--fade-in {
+	animation-name: fadeIn;
+	animation-duration: 300ms;
+	animation-timing-function: opacity cubic-bezier(0, 1, 0.4, 1);
+}
+
+/* START bouton toggle sur mobile */
+
+.navbar-toggler {
+	background: none !important;
+	border: none !important;
+}
+
+.navbar-toggler .icon-bar {
+	display: block !important;
+	width: 35px !important;
+	height: 5px !important;
+	border-radius: 5px !important;
+	margin: 5px 0 5px 0 !important;
+	transition: all 0.2s !important;
+}
+
+.navbar-toggler .icon-bar:nth-of-type(1) {
+	transform: rotate(50deg) !important;
+	transform-origin: 10% 10% !important;
+}
+
+.navbar-toggler .icon-bar:nth-of-type(2) {
+	opacity: 0 !important;
+	filter: alpha(opacity=0) !important;
+}
+
+.navbar-toggler .icon-bar:nth-of-type(3) {
+	transform: rotate(-50deg) !important;
+	transform-origin: 10% 98% !important;
+}
+
+.navbar-toggler.collapsed .icon-bar:nth-of-type(1) {
+	transform: rotate(0) !important;
+}
+
+.navbar-toggler.collapsed .icon-bar:nth-of-type(2) {
+	opacity: 1 !important;
+	filter: alpha(opacity=100) !important;
+}
+
+.navbar-toggler.collapsed .icon-bar:nth-of-type(3) {
+	transform: rotate(0) !important;
+}
+
+/*- END bouton toggle -*/
+/* --------------------- */
+
+#profil_dropdown {
+	margin-right: 2% !important;
+}
+
+.bg-image-cover {
+    background-image: url(img/app_photo_one_line.png)
+    background-repeat: no
+    background-position:center
+}
+

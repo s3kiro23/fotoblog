@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Photo{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{{ photo.title }}</h2>
+    <p><a href="{% url 'edit_photo' photo.id %}">Modifier la photo</a></p>
+    <img src="{{ photo.image.url }}" width="45%">
+    <p>{{ photo.caption }}</p>
+</div>
+{% endblock %}

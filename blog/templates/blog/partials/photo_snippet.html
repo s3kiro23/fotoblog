@@ -1,0 +1,20 @@
+{% load blog_extras %}
+
+<div class="col-4 mt-5">
+    {% if perms.blog.change_photo %}
+    <a href="{% url 'photo_detail' photo.id %}">
+        <div class="card bg-dark text-white">
+            <img src="{{ photo.image.url }}" class="card-img" alt="...">
+        </div>
+    </a>
+    {% else %}
+    <div class="card bg-dark text-white">
+        <img src="{{ photo.image.url }}" class="card-img" alt="...">
+    </div>
+    {% endif %}
+    <div class="text-center mt-2">
+        <p class="card-text fw-bold mb-0">{{ photo.caption }}</p>
+        <p class="card-text mb-0">Prise par <span class="fw-bold">{% get_poster_display photo.uploader %}</span></p>
+        <p class="card-text">{{ photo.date_created|get_posted_at_display }}</p>
+    </div>
+</div>

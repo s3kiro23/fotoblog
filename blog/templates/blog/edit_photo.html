@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit photo{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card w-50 mx-auto">
+        <div class="card-header d-flex justify-content-center align-items-center">
+            <h2>Modifier la photo</h2>
+        </div>
+
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ edit_form.as_p }}
+                <button class="d-flex btn btn-primary" type="submit">Sauvegarder</button>
+            </form>
+            <hr>
+            <h3 class="mb-3">Supprimer le post</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ delete_form.as_p }}
+                <button class="d-flex btn btn-outline-danger" type="submit">Supprimer</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

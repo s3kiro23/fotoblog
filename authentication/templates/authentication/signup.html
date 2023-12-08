@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card w-50 mx-auto">
+        <div class="card-header d-flex justify-content-center align-items-center">
+            <h1>Inscription</h1>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="d-flex">
+                    <button class="btn btn-primary" type="submit">S'inscrire</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

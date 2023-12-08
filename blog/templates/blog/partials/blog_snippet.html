@@ -1,0 +1,14 @@
+{% load blog_extras %}
+
+<div class="col-4 mt-5">
+    <a href="{% url 'view_blog' blog.id %}">
+        <div class="card bg-dark text-white">
+            <img src="{{ blog.photo.image.url }}" class="card-img" alt="...">
+        </div>
+    </a>
+    <div class="text-center mt-2">
+        <h5 class="card-title fw-bold">{{ blog.title }}</h5>
+        <p class="card-text mb-0">Écrit par <span class="fw-bold">{{ blog.contributors.all|join:", " }}</span></p>
+        <p class="card-text">{{ blog.date_created|get_posted_at_display }}</p>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{{ blog.title }}</h2>
+    {% if perms.blog.change_photo %}
+    <p><a href="{% url 'edit_blog' blog.id %}">Modifier le billet</a></p>
+    {% endif %}
+    <img src="{{ blog.photo.image.url }}" width="60%">
+    <p>{{ blog.photo.caption }}</p>
+    <p>{{ blog.content }}</p>
+</div>
+{% endblock %}

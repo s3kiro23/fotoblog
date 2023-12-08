@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<main class="container-xl">
+    <div class="row">
+        <div class="col-12">
+            <nav class="my-4" style="--falcon-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="path-to-home" href="{% url 'home' %}">Accueil</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Mon profil</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-8 position-relative">
+            <div class="card shadow rounded border-0">
+                <div class="bg-primary bg-opacity-10 rounded-top">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div class="py-2">
+                            <h4 class="text-2xl leading-6 font-medium text-primary">Mon profil</h4>
+                            <p class="text-gray-500">Informations personnelles.</p>
+                            <a id="disable"
+                               type="button"
+                               class="mt-2 text-danger text-decoration-none"
+                               href="{% url 'disable_account' %}">
+                                Désactiver le compte
+                            </a>
+                        </div>
+                        <a href="{% url 'edit_profile' %}">
+                            <button class="data_modify btn btn-primary rounded py-0 px-1"
+                                    type="button"
+                                    data-toggle="tooltip"
+                                    data-placement="bottom" title="modifier">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                                Modifier
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <h6 class="text-decoration-underline">Identification</h6>
+                            <div class="d-flex gap-2">
+                                <div class="col-6">
+                                    <div>
+                                        <p class="text-gray-500 m-0">Nom d'utilisateur</p>
+                                        <span id="profile_login" class="data text-muted">{{ user.username }}</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div>
+                                        <p class="text-gray-500 m-0">Email</p>
+                                        <span id="profile_mail" class="data text-muted">{{ user.email }}</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div>
+                                        <p class="text-gray-500 m-0">Rôle</p>
+                                        <span id="profile_role"
+                                              class="data text-muted">{{ user.get_role_display }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <h6 class="text-decoration-underline">Civilité</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <div>
+                                    <p class="text-gray-500 m-0">Nom</p>
+                                    <span id="profile_nom" class="data text-muted">{{ user.last_name }}</span>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 m-0">Prénom</p>
+                                    <span id="profile_prenom" class="data text-muted">{{ user.first_name }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg mt-3 mt-lg-0">
+                            <h6 class="text-decoration-underline">Coordonnées</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <div>
+                                    <p class="text-gray-500 m-0">Adresse</p>
+                                    <span id="profile_addr" class="data text-muted">Adresse</span>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 m-0">Numéro de téléphone</p>
+                                    <span id="profile_tel" class="data text-muted">Numéro de téléphone</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex flex-row align-items-center gap-3 mb-2">
+                                <h6 class="text-decoration-underline m-0">
+                                    Sécurité A2F
+                                </h6>
+                                <span class="badge-a2f badge rounded-pill bg-opacity-25"></span>
+                            </div>
+                            <div class="d-flex flex-row gap-2 align-items-center">
+                                <p class="text-gray-500 m-0">
+                                    Activation de l'authentification à doubles facteurs (2FA)
+                                </p>
+                                <div class="form-check form-switch mb-0">
+                                    <input class="form-check-input hover-bnt-switch"
+                                           name="btnA2f" type="checkbox"
+                                           role="switch" id="btnA2f">
+                                    <label class="form-check-label" for="btnA2f"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col ms-md-3 mt-5 mt-md-0 position-relative">
+            <div class="card shadow rounded border-0">
+                <!--<div class="card-header bg-success bg-opacity-10 rounded-top d-flex justify-content-between">
+                    <h4 class="text-2xl leading-6 font-medium text-success">Photo de profil</h4>
+                </div>-->
+                <div class="card-body pt-5">
+                    <div class="d-flex flex-column justify-content-center align-items-center gap-4">
+                        <img class="img_profile rounded-circle" width="130" height="130"
+                             src="{% if user.profile_pic %} {{ user.profile_pic.url }} {% else %} https://picsum.photos/55 {% endif %}"
+                             alt="130x130">
+                        <a class="
+                                d-flex justify-content-center
+                                btn btn-primary
+                                rounded text-white
+                                p-2 w-100 mt-5" role="button" href="{% url 'profile_photo_upload' %}">
+                            Changer photo de profil
+                        </a>
+                        <p class="small p-1">Pour un meilleur rendu, utilisez une image d'au moins 128x128px au
+                            format .jpg</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
